@@ -13,6 +13,8 @@ namespace SokoBomber2.Win
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+
         }
 
         protected override void Initialize()
