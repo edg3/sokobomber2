@@ -47,7 +47,6 @@ namespace SokoBomber2.Win.EngineInterfaces
                 DrawRect.Height = sprite.Height;
 
                 SpriteBatch.Draw(ContentManager.Textures[_what], DrawRect, Color.White);
-
             }
         }
     }
