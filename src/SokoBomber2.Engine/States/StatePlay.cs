@@ -87,6 +87,18 @@ namespace SokoBomber2.Engine.States
             {
                 playerTileX++;
             }
+            else if (SokoBomber2Engine.Instance.KeyLeftPressed)
+            {
+                playerTileX--;
+            }
+            else if (SokoBomber2Engine.Instance.KeyUpPressed)
+            {
+                playerTileY--;
+            }
+            else if (SokoBomber2Engine.Instance.KeyDownPressed)
+            {
+                playerTileY++;
+            }
         }
     }
 }
