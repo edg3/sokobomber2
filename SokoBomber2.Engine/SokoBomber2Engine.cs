@@ -83,7 +83,10 @@ namespace SokoBomber2
 
         public void Update()
         {
-
+            if (States != null)
+            {
+                States[States.Count - 1].Update();
+            }
         }
 
         public void Draw()
