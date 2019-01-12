@@ -15,7 +15,19 @@ namespace SokoBomber2.Engine.States
             {
                 for (int y = 0; y < levelHeight; y++)
                 {
-                    _spriteBatch.Draw(0,0,"tGround", x * 32 + 390 - playerTileX * 32, y * 32 + 210 - playerTileY * 32);
+                    switch (levelTiles[x,y])
+                    {
+                        case 0: break;
+                        case 1:
+                            // Wall
+                            _spriteBatch.Draw(0, 0, "tWall", x * 32 + 390 - playerTileX * 32, y * 32 + 210 - playerTileY * 32);
+                            break;
+                        case 3: // Player starts on a tile too
+                        case 2:
+                            // Floor
+                            _spriteBatch.Draw(0, 0, "tGround", x * 32 + 390 - playerTileX * 32, y * 32 + 210 - playerTileY * 32);
+                            break;
+                    }
                 }
             }
 
