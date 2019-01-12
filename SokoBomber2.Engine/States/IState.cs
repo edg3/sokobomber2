@@ -8,6 +8,6 @@ namespace SokoBomber2.States
     {
         void Load(IContentManager _content);
         void Update();
-        void Draw();
+        void Draw(ISpriteBatch _spriteBatch);
     }
 }

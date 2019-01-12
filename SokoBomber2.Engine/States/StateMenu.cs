@@ -9,9 +9,9 @@ namespace SokoBomber2.Engine.States
 {
     public class StateMenu : IState
     {
-        public void Draw()
+        public void Draw(ISpriteBatch _spriteBatch)
         {
-            throw new NotImplementedException();
+            _spriteBatch.Draw("mOptions", 0, 0, 100, 100);
         }
 
         public void Load(IContentManager _content)
