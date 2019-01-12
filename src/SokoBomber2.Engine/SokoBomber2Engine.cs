@@ -72,6 +72,18 @@ namespace SokoBomber2
             }
         }
 
+        public bool KeyLeftPressed { get; private set; }
+        public bool KeyRightPressed { get; private set; }
+        public bool KeyUpPressed { get; private set; }
+        public bool KeyDownPressed { get; private set; }
+        public void KeyboardInput(bool _leftPressed, bool _rightPressed, bool _upPressed, bool _downPressed)
+        {
+            KeyLeftPressed = _leftPressed;
+            KeyRightPressed = _rightPressed;
+            KeyUpPressed = _upPressed;
+            KeyDownPressed = _downPressed;
+        }
+
         private List<IState> States { get; set; }
         public void AddState(IState _state)
         {
