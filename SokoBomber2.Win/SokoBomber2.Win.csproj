@@ -61,9 +61,9 @@
     <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SokoBomber2\SokoBomber2.csproj">
-      <Project>{b3fd7e13-6acd-4436-8e5e-d73df0e94b1c}</Project>
-      <Name>SokoBomber2</Name>
+    <ProjectReference Include="..\SokoBomber2.Engine\SokoBomber2.Engine.csproj">
+      <Project>{3abf6512-a252-4b04-905f-e8e56c825433}</Project>
+      <Name>SokoBomber2.Engine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
