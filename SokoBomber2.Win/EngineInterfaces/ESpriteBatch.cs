@@ -34,5 +34,21 @@ namespace SokoBomber2.Win.EngineInterfaces
                 SpriteBatch.Draw(ContentManager.Textures[_what], DrawRect, Color.White);
             }
         }
+
+        public void Draw(string _what, int _x, int _y)
+        {
+            if (ContentManager.Textures.ContainsKey(_what))
+            {
+                DrawRect.X = _x;
+                DrawRect.Y = _y;
+
+                var sprite = ContentManager.Textures[_what];
+                DrawRect.Width = sprite.Width;
+                DrawRect.Height = sprite.Height;
+
+                SpriteBatch.Draw(ContentManager.Textures[_what], DrawRect, Color.White);
+
+            }
+        }
     }
 }
