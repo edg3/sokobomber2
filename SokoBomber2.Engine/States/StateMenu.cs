@@ -18,10 +18,14 @@ namespace SokoBomber2.Engine.States
             _spriteBatch.Draw("mButtonAbout", 604, 105);
 
             _spriteBatch.Draw("mTwo", 165, 370);
+
+            _spriteBatch.Draw("mouse", SokoBomber2Engine.Instance.MouseX, SokoBomber2Engine.Instance.MouseY);
         }
 
         public void Load(IContentManager _content)
         {
+            _content.Load("mouse");
+
             _content.Load("mOptions");
             _content.Load("mButtonAbout");
             _content.Load("mButtonPlay");
