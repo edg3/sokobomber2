@@ -15,7 +15,7 @@ namespace SokoBomber2.Engine.States
             {
                 for (int y = 0; y < levelHeight; y++)
                 {
-                    _spriteBatch.Draw("tGround", x * 32 + 390, y * 32 + 210);
+                    _spriteBatch.Draw(0,0,"tGround", x * 32 + 390 - playerTileX * 32, y * 32 + 210 - playerTileY * 32);
                 }
             }
 
