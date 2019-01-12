@@ -67,7 +67,9 @@ namespace SokoBomber2.Win
             CurrentKeyboardState = Keyboard.GetState();
             CurrentMouseState = Mouse.GetState();
 
-
+            SokoBomber2Engine.TrackMouse(CurrentMouseState.Position.X, CurrentMouseState.Position.Y,
+                                         CurrentMouseState.LeftButton == ButtonState.Pressed, PreviousMouseState.LeftButton == ButtonState.Pressed,
+                                         CurrentMouseState.RightButton == ButtonState.Pressed, PreviousMouseState.RightButton == ButtonState.Pressed);
 
             SokoBomber2Engine.Update();
 

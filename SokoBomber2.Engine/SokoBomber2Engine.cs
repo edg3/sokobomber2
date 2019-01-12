@@ -22,6 +22,56 @@ namespace SokoBomber2
             Instance = this;
         }
 
+        public int MouseX { get; private set; }
+        public int MouseY { get; private set; }
+        public bool MouseLeftClicked { get; private set; }
+        public bool MouseLeftHeld { get; private set; }
+        public bool MouseRightClicked { get; private set; }
+        public bool MouseRightHeld { get; private set; }
+        public void TrackMouse(int _x, int _y, bool _leftClick, bool _previousLeftClick, bool _rightClick, bool _previousRightClick)
+        {
+            MouseX = _x;
+            MouseY = _y;
+
+            if (_leftClick)
+            {
+                if (!_previousLeftClick)
+                {
+                    MouseLeftClicked = true;
+                    MouseLeftHeld = false;
+                }
+                else
+                {
+                    MouseLeftHeld = true;
+                    MouseLeftClicked = false;
+                }
+            }
+            else
+            {
+                MouseLeftHeld = false;
+                MouseLeftClicked = false;
+            }
+
+            if (_rightClick)
+            {
+                if (!_previousLeftClick)
+                {
+                    MouseRightClicked = true;
+                    MouseRightHeld = false;
+                }
+                else
+                {
+                    MouseRightHeld = true;
+                    MouseRightClicked = false;
+                }
+            }
+            else
+            {
+                MouseRightHeld = false;
+                MouseRightClicked = false;
+            }
+        }
+
         private List<IState> States { get; set; }
         public void AddState(IState _state)
         {
