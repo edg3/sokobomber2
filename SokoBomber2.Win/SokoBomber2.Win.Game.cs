@@ -65,7 +65,9 @@ namespace SokoBomber2.Win
                 Exit();
 
             CurrentKeyboardState = Keyboard.GetState();
-            _currentMouseState = Mouse.GetState();
+            CurrentMouseState = Mouse.GetState();
+
+
 
             SokoBomber2Engine.Update();
 

@@ -6,12 +6,20 @@ namespace SokoBomber2
 {
     public class SokoBomber2Engine
     {
+        private static SokoBomber2Engine _instance;
+        public static SokoBomber2Engine Instance
+        {
+            get { return _instance; }
+            private set { _instance = value; }
+        }
+
         public ISpriteBatch SpriteBatch { get; }
         public IContentManager Content { get; }
         public SokoBomber2Engine(ISpriteBatch _spriteBatch, IContentManager _content)
         {
             SpriteBatch = _spriteBatch;
             Content = _content;
+            Instance = this;
         }
 
         private List<IState> States { get; set; }
