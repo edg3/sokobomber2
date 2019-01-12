@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SokoBomber2.Engine.States;
 using SokoBomber2.Win.EngineInterfaces;
 
 namespace SokoBomber2.Win
@@ -29,6 +30,8 @@ namespace SokoBomber2.Win
             var eContentManage = new EContentManager(Content);
             var eSpriteBatch = new ESpriteBatch(eContentManage, spriteBatch);
             SokoBomber2Engine = new SokoBomber2Engine(eSpriteBatch, eContentManage);
+
+            SokoBomber2Engine.AddState(new StateMenu());
         }
         
         protected override void Update(GameTime gameTime)
@@ -36,13 +39,19 @@ namespace SokoBomber2.Win
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            SokoBomber2Engine.Update();
+
             base.Update(gameTime);
         }
         
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            
+
+            spriteBatch.Begin();
+            SokoBomber2Engine.Draw();
+            spriteBatch.End();
+
             base.Draw(gameTime);
         }
 
