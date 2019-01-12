@@ -47,6 +47,7 @@
     <Compile Include="SokoBomber2Engine.cs" />
     <Compile Include="States\IState.cs" />
     <Compile Include="States\StateMenu.cs" />
+    <Compile Include="States\StatePlay.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

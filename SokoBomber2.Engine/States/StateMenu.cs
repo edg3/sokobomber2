@@ -65,7 +65,7 @@ namespace SokoBomber2.Engine.States
 
             if ((hoverPlay != 0) && (SokoBomber2Engine.Instance.MouseLeftClicked))
             {
-                
+                SokoBomber2Engine.Instance.AddState(new StatePlay());
             }
             else if ((hoverAbout != 0) && (SokoBomber2Engine.Instance.MouseLeftClicked))
             {
