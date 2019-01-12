@@ -31,6 +31,8 @@ namespace SokoBomber2.Engine.States
                 }
             }
 
+            _spriteBatch.Draw(0, 0, "tPlayerIdle", 390, 210);
+
             _spriteBatch.Draw("mouse", SokoBomber2Engine.Instance.MouseX, SokoBomber2Engine.Instance.MouseY);
         }
 
