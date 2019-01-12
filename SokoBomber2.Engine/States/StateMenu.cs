@@ -17,6 +17,12 @@ namespace SokoBomber2.Engine.States
         public void Load(IContentManager _content)
         {
             _content.Load("mOptions");
+            _content.Load("mButtonAbout");
+            _content.Load("mButtonPlay");
+            _content.Load("mDiamond");
+            _content.Load("mQuit");
+            _content.Load("mSokobomber");
+            _content.Load("mTwo");
         }
 
         public void Update()
