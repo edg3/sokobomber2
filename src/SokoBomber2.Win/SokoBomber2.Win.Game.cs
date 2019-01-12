@@ -70,6 +70,12 @@ namespace SokoBomber2.Win
             SokoBomber2Engine.TrackMouse(CurrentMouseState.Position.X, CurrentMouseState.Position.Y,
                                          CurrentMouseState.LeftButton == ButtonState.Pressed, PreviousMouseState.LeftButton == ButtonState.Pressed,
                                          CurrentMouseState.RightButton == ButtonState.Pressed, PreviousMouseState.RightButton == ButtonState.Pressed);
+            SokoBomber2Engine.KeyboardInput(
+                  CurrentKeyboardState.IsKeyDown(Keys.Left) && PreviousKeyboardState.IsKeyUp(Keys.Left),
+                  CurrentKeyboardState.IsKeyDown(Keys.Right) && PreviousKeyboardState.IsKeyUp(Keys.Right),
+                  CurrentKeyboardState.IsKeyDown(Keys.Up) && PreviousKeyboardState.IsKeyUp(Keys.Up),
+                  CurrentKeyboardState.IsKeyDown(Keys.Down) && PreviousKeyboardState.IsKeyUp(Keys.Down)
+                );
 
             SokoBomber2Engine.Update();
 
