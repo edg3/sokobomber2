@@ -15,7 +15,7 @@ namespace SokoBomber2.Engine.States
             _spriteBatch.Draw("mOptions", 550, 0);
 
             _spriteBatch.Draw("mButtonPlay", 604 + hoverPlay, 25 - hoverPlay);
-            _spriteBatch.Draw("mButtonAbout", 604, 105);
+            _spriteBatch.Draw("mButtonAbout", 604 + hoverAbout, 105 - hoverAbout);
 
             _spriteBatch.Draw("mTwo", 165, 370);
 
@@ -53,10 +53,26 @@ namespace SokoBomber2.Engine.States
                 hoverPlay = 0;
             }
 
+            if ((mouseX > 604) && (mouseX < 704) &&
+                (mouseY > 105) && (mouseY < 165))
+            {
+                hoverAbout = 2;
+            }
+            else
+            {
+                hoverAbout = 0;
+            }
+
             if ((hoverPlay != 0) && (SokoBomber2Engine.Instance.MouseLeftClicked))
             {
-                throw new Exception("We can make the state change!");
+                
             }
+            else if ((hoverAbout != 0) && (SokoBomber2Engine.Instance.MouseLeftClicked))
+            {
+                throw new Exception("About state not implemented.");
+            }
+
+
         }
     }
 }
