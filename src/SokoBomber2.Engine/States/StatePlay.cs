@@ -83,7 +83,10 @@ namespace SokoBomber2.Engine.States
         
         public void Update()
         {
-
+            if (SokoBomber2Engine.Instance.KeyRightPressed)
+            {
+                playerTileX++;
+            }
         }
     }
 }
