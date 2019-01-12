@@ -11,17 +11,32 @@ namespace SokoBomber2.Engine.States
     {
         public void Draw(ISpriteBatch _spriteBatch)
         {
-            throw new NotImplementedException();
+            _spriteBatch.Draw("mouse", SokoBomber2Engine.Instance.MouseX, SokoBomber2Engine.Instance.MouseY);
         }
 
         public void Load(IContentManager _content)
         {
-            throw new NotImplementedException();
-        }
+            // Art
+            _content.Load("tBomb");
+            _content.Load("tDiamond");
+            _content.Load("tFragments");
+            _content.Load("tFuseLit");
+            _content.Load("tGround");
+            _content.Load("tIce");
+            _content.Load("tPlayerDead");
+            _content.Load("tPlayerDown");
+            _content.Load("tPlayerIdle");
+            _content.Load("tPlayerLeft");
+            _content.Load("tPlayerUp");
+            _content.Load("tTriggerPosition");
+            _content.Load("tWall");
 
+            // Level
+        }
+        
         public void Update()
         {
-            throw new NotImplementedException();
+
         }
     }
 }
