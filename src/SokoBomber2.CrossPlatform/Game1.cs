@@ -4,11 +4,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using SokoBomber2.Engine;
+using SokoBomber2.Engine.States;
+using SokoBomber2.CrossPlatform.EngineInterfaces;
+
 namespace SokoBomber2.CrossPlatform
 {
-	/// <summary>
-	/// This is the main type for your game.
-	/// </summary>
 	public class Game1 : Game
 	{
 		GraphicsDeviceManager graphics;
@@ -20,61 +21,85 @@ namespace SokoBomber2.CrossPlatform
 			Content.RootDirectory = "Content";
 		}
 
-		/// <summary>
-		/// Allows the game to perform any initialization it needs to before starting to run.
-		/// This is where it can query for any required services and load any non-graphic
-		/// related content.  Calling base.Initialize will enumerate through any components
-		/// and initialize them as well.
-		/// </summary>
 		protected override void Initialize()
 		{
-			// TODO: Add your initialization logic here
-
 			base.Initialize();
 		}
 
-		/// <summary>
-		/// LoadContent will be called once per game and is the place to load
-		/// all of your content.
-		/// </summary>
+		public SokoBomber2Engine SokoBomber2Engine { get; private set; }
 		protected override void LoadContent()
 		{
-			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
-			//TODO: use this.Content to load your game content here 
+			var eContentManage = new EContentManager(Content);
+			var eSpriteBatch = new ESpriteBatch(eContentManage, spriteBatch);
+			SokoBomber2Engine = new SokoBomber2Engine(eSpriteBatch, eContentManage);
+
+			SokoBomber2Engine.AddState(new StateMenu());
 		}
 
-		/// <summary>
-		/// Allows the game to run logic such as updating the world,
-		/// checking for collisions, gathering input, and playing audio.
-		/// </summary>
-		/// <param name="gameTime">Provides a snapshot of timing values.</param>
+		KeyboardState PreviousKeyboardState;
+		KeyboardState _currentKeyboardState;
+		KeyboardState CurrentKeyboardState
+		{
+			get
+			{
+				return _currentKeyboardState;
+			}
+			set
+			{
+				PreviousKeyboardState = _currentKeyboardState;
+				_currentKeyboardState = value;
+			}
+		}
+		MouseState PreviousMouseState;
+		MouseState _currentMouseState;
+		MouseState CurrentMouseState
+		{
+			get
+			{
+				return _currentMouseState;
+			}
+			set
+			{
+				PreviousMouseState = _currentMouseState;
+				_currentMouseState = value;
+			}
+		}
 		protected override void Update(GameTime gameTime)
 		{
-			// For Mobile devices, this logic will close the Game when the Back button is pressed
-			// Exit() is obsolete on iOS
-#if !__IOS__ && !__TVOS__
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
-#endif
 
-			// TODO: Add your update logic here
+			CurrentKeyboardState = Keyboard.GetState();
+			CurrentMouseState = Mouse.GetState();
+
+			SokoBomber2Engine.TrackMouse(CurrentMouseState.Position.X, CurrentMouseState.Position.Y,
+										 CurrentMouseState.LeftButton == ButtonState.Pressed, PreviousMouseState.LeftButton == ButtonState.Pressed,
+										 CurrentMouseState.RightButton == ButtonState.Pressed, PreviousMouseState.RightButton == ButtonState.Pressed);
+			SokoBomber2Engine.KeyboardInput(
+				  CurrentKeyboardState.IsKeyDown(Keys.Left) && PreviousKeyboardState.IsKeyUp(Keys.Left),
+				  CurrentKeyboardState.IsKeyDown(Keys.Right) && PreviousKeyboardState.IsKeyUp(Keys.Right),
+				  CurrentKeyboardState.IsKeyDown(Keys.Up) && PreviousKeyboardState.IsKeyUp(Keys.Up),
+				  CurrentKeyboardState.IsKeyDown(Keys.Down) && PreviousKeyboardState.IsKeyUp(Keys.Down)
+				);
+
+			SokoBomber2Engine.Update();
 
 			base.Update(gameTime);
 		}
 
-		/// <summary>
-		/// This is called when the game should draw itself.
-		/// </summary>
-		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw(GameTime gameTime)
 		{
-			graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+			GraphicsDevice.Clear(Color.Black);
 
-			//TODO: Add your drawing code here
+			spriteBatch.Begin();
+			SokoBomber2Engine.Draw();
+			spriteBatch.End();
 
 			base.Draw(gameTime);
 		}
+
+		protected override void UnloadContent() { }
 	}
 }

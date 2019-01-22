@@ -29,7 +29,7 @@ namespace SokoBomber2.Engine.States
             _content.Load("mOptions");
             _content.Load("mButtonAbout");
             _content.Load("mButtonPlay");
-            _content.Load("mSokobomber");
+            _content.Load("mSokoBomber");
             _content.Load("mTwo");
 
             _content.Load("mDiamond");
