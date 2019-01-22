@@ -1,0 +1,8 @@
+Tue Jan 22, 2019:
+ - Started binding project to cross-platform. Will see about keeping all the code the same on every platform (as in, sharing files between projects).
+ - I wonder about the content project(s), seperated or the same?
+ - that being said there seems to be a few slight bugs in the logic (essentially prevented the copy-paste being perfect).
+ - The copy paste got a significant set of the features working, the next "game dev" time I spend will be fixing these mishaps.
+ -> Final things I want: I need to bind the project code to the different platforms in a more guaranteed way. As in, compile the same code on Linux and have it all run, compile the same code on Windows and have it all run, etc. I still need to sort a few things out on the final "joint" project.
+ -> As a side note, I am nearing something usable in the game's procedural generation. Just had several stumbling blocks due to starting work for a company.
+
