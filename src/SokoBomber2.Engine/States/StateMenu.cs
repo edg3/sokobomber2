@@ -11,7 +11,7 @@ namespace SokoBomber2.Engine.States
     {
         public void Draw(ISpriteBatch _spriteBatch)
         {
-            _spriteBatch.Draw("mSokobomber", 0, 0);
+            _spriteBatch.Draw("mSokoBomber", 0, 0);
             _spriteBatch.Draw("mOptions", 550, 0);
 
             _spriteBatch.Draw("mButtonPlay", 604 + hoverPlay, 25 - hoverPlay);

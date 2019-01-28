@@ -37,6 +37,7 @@
     <Compile Include="States\IState.cs" />
     <Compile Include="States\StateMenu.cs" />
     <Compile Include="States\StatePlay.cs" />
+    <Compile Include="SBGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

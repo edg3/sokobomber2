@@ -1,4 +1,5 @@
-﻿using SokoBomber2.States;
+﻿using SokoBomber2;
+using SokoBomber2.States;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,13 @@ namespace SokoBomber2.Engine.States
 {
     class StatePlay : IState
     {
+		string _lvlGen = "";
+		public StatePlay()
+		{
+			SBGenerator gen = new SBGenerator();
+			_lvlGen = gen.SeedGen("1");
+		}
+
         public void Draw(ISpriteBatch _spriteBatch)
         {
             for (int x = 0; x < levelWidth; x++)
