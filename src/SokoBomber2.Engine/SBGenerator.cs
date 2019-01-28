@@ -25,7 +25,18 @@ namespace SokoBomber2.Engine
 			var array = msEncrypt.ToArray();
             for (int i = 0; i < array.Length; i++)
             {
-                answer += ((char)array[i]).ToString();
+                var val = array[i];
+                if (val < 33)
+                {
+                    val = (byte)((int)val * 7);
+                }
+
+                if (val >= 127 && val <= 160)
+                {
+                    val = (byte)(val + 33);
+                }
+
+                answer += ((char)val).ToString();
             }
 
 			return answer;
